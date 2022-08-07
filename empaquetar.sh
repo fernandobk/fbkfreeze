@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 
 # Crear nuevo registro y mover el anterior
 cd /opt/fbkfreeze/

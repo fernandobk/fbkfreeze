@@ -1,8 +1,8 @@
-!#/bin/bash
+#!/bin/bash
 
 # Mover último log a log antiguo
-cd /opt/fbkfreeze/
-mv -v logs/logreboot0.txt logs/logreboot1.txt >> logreboot0.txt
+# cd /opt/fbkfreeze/
+# mv -v .log logs/logreboot1.txt >> logreboot0.txt
 
 echo "========== INICIO ==========" | tee -a logreboot0.txt
 date logs/logreboot0.txt

@@ -1,35 +1,44 @@
 #!/bin/bash
-echo "El estado actual del sistema es:";
-cat estado;
-echo "";
-echo "Opciones: ";
-echo "	-a	Activa el sistema";
-echo "	-d	Desactiva el sistema";
-echo "	-c	Crear o recrea un paquete de la carpeta /home/$usuario";
-echo "	-v	Ver el estado actual del equipo";
 
 case $1 in
 	"-a")
-		ln -s -f -v "congelado.sh" "atreboot"
+		echo "Congelado" > status
 		;;
 	"-d")
-		ln -s -f -v "descongelado.sh" "atreboot"
+		echo "Descongelado" > status
 		;;
-	"-c")
-		./empaquetar.sh
+	"-e")
+		empaquetar
 		;;
 	"-v")
-		read estado < estado
-		echo estado;
+		read estado < status
+		echo $estado
+		;;
 	*)
-		echo "Argumento incorrecto"
+		echo "fbkfreeze - Sistema de congelado de carpeta de usuario para debian"
+		echo "";
+		echo "Opciones: ";
+		echo "	-a	Activa el sistema.";
+		echo "	-d	Desactiva el sistema.";
+		echo "	-e	Crear o recrea un paquete de la carpeta /home.";
+		echo "	-r	Restablecer el sistema (Usar con Cron)."
+		echo "	-u	Establecer nombre de usuario."
+		echo "	-v	Ver el estado actual del equipo.";
 esac
 
 function empaquetar(){
-	if [$2 == ""];then
-		echo "Falta nombre de usuario";
-		return;
+	read usuario < username
+	if [$usuario == ""];then
+		echo "Falta nombre de usuario:"
+		ls /home
+		echo "Establecer con -u nombreusuario"
+		return
+	
+	else
+		tar -v -c -f "/home/fbkfreeze.tar" -C /home $usuario
 	fi
+}
 
-	tar -v -c -f "$2.tar" -C /home "$2/" >> logs/
+function restablecer(){
+	tar -v -x -f "/home/fbkfreeze.tar" -C /home
 }
