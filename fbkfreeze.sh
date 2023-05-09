@@ -1,5 +1,5 @@
 #!/bin/bash
-hoy = $(date +%Y-%m-%d)
+hoy=$(date +%Y-%m-%d)
 read username < username.conf
 read today < today.conf
 read status < status.conf
@@ -56,5 +56,7 @@ function restablecer(){
 	if ["$today" != "$hoy" && $status=="Congelado"]; then
 		rm -R -f -v /home/$username
 		tar -v -x -f "/home/$username.tar" -C /home
+
+		echo $hoy > today.conf
 	fi
 }
