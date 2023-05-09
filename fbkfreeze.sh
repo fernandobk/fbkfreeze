@@ -17,12 +17,13 @@ case $1 in
 		echo $_u > username.conf
 		echo "Se guardó el nombre de usuario:" $_u
 		;;
-	"-e")
-		empaquetar
-		;;
 	"-v")
 		echo $status
 		;;
+	"-e")
+		empaquetar
+		;;
+	
 	*)
 		echo "fbkfreeze - Sistema de congelado de carpeta de usuario para debian"
 		echo ""
