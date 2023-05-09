@@ -35,7 +35,7 @@ case $1 in
 			echo "Nombre de usuario registrado:" $username
 			read -p "Presiona Enter para continuar..."
 
-			tar -v -c -f "/home/$usuario.tar" -C /home $usuario
+			tar -v -c -f "/home/$username.tar" -C /home $username
 		fi
 		;;
 	
