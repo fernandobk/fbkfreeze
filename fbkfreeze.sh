@@ -21,7 +21,7 @@ case $1 in
 		empaquetar
 		;;
 	"-v")
-		echo status
+		echo $status
 		;;
 	*)
 		echo "fbkfreeze - Sistema de congelado de carpeta de usuario para debian"
