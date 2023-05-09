@@ -25,7 +25,7 @@ case $1 in
 		;;
 	
 	"-e")
-		if [$username == ""];then
+		if [ $username == "" ]; then
 			echo "Falta nombre de usuario:"
 			ls /home
 			echo "Establecer con -u"
@@ -40,7 +40,7 @@ case $1 in
 		;;
 	
 	"-r")
-		if ["$today" != "$hoy" && $status=="Congelado"]; then
+		if [ "$today" != "$hoy" ] && [ $status == "Congelado" ]; then
 			rm -R -f -v /home/$username
 			tar -v -x -f "/home/$username.tar" -C /home
 
