@@ -5,7 +5,7 @@ read today < today.conf
 read status < status.conf
 
 case $1 in
-	"-a")
+	"-c")
 		echo "Congelado" > status.conf
 		;;
 	
